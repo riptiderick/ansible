@@ -1,0 +1,21 @@
+- name: install latest qemu-guest-agent
+  hosts: "*"
+  tasks:
+    - name: install traceroute
+      apt:
+        name: traceroute
+        state: present
+        update_cache: true
+      become: true
+    - name: install iperf3      
+      apt:
+        name: iperf3    
+        state: present
+        update_cache: true
+      become: true
+    - name: install nethogs      
+      apt:
+        name: nethogs   
+        state: present
+        update_cache: true
+      become: true

@@ -1,0 +1,334 @@
+version 9.3(10) Bios:version  
+hostname core-2
+vdc core-2 id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+cfs eth distribute
+feature ospf
+feature bgp
+feature interface-vlan
+feature hsrp
+feature vpc
+feature lldp
+
+no password strength-check
+username admin password 5 $5$JMGJBJ$qOPSWjnnCFM9ycSfXSGXjRg6k4ERyvjLSzl30ezs0.3  role network-admin
+ip domain-lookup
+ip access-list OSPF-SVI
+  10 permit ip 10.0.0.0 0.0.3.255 any 
+copp profile strict
+snmp-server user admin network-admin auth md5 1778DE37D97A44775E0DB3F2E4EE34FAF2DE priv 480E975EE2423D151E4D8D9D952BD22729BB localizedV2key
+rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+
+vlan 1-2,10,1000-1002,1010-1012
+vlan 2
+  name ospf
+vlan 1000
+  name Magma-MGMT
+vlan 1001
+  name Magma-iDRAC
+vlan 1002
+  name Magma-Data
+vlan 1010
+  name Teragraph-MGMT
+vlan 1011
+  name Teragraph-iDRAC
+vlan 1012
+  name Teragraph-Data
+
+route-map ospf-RD permit 10
+  match ip address OSPF-SVI 
+vrf context keep-alive
+vrf context management
+  ip route 0.0.0.0/0 10.10.100.1
+vpc domain 1
+  peer-keepalive destination 1.1.1.1 source 1.1.1.2 vrf keep-alive
+
+
+interface Vlan1
+
+interface Vlan2
+  no shutdown
+  ip address 10.11.1.10/30
+  ip ospf network point-to-point
+  no ip ospf passive-interface
+  ip router ospf 1 area 0.0.0.0
+
+interface Vlan10
+  no shutdown
+  ip address 10.1.0.2/24
+
+interface Vlan100
+
+interface Vlan1000
+  description Magma-MGMT
+  no shutdown
+  ip address 10.0.0.3/24
+  ip router ospf 1 area 0.0.0.0
+  hsrp version 2
+  hsrp 1000 
+    ip 10.0.0.1
+
+interface Vlan1001
+  description Magma-iDRAC
+  no shutdown
+  ip address 10.0.1.3/24
+  ip router ospf 1 area 0.0.0.0
+  hsrp version 2
+  hsrp 1001 
+    ip 10.0.1.1
+
+interface Vlan1002
+  description Magma-Data
+  no shutdown
+  ip address 10.0.2.3/24
+  ip router ospf 1 area 0.0.0.0
+  hsrp version 2
+  hsrp 1002 
+    ip 10.0.2.1
+
+interface Vlan1010
+  description Teragraph-MGMT
+  no shutdown
+  ip address 10.0.10.3/24
+  ip router ospf 1 area 0.0.0.0
+  hsrp version 2
+  hsrp 1010 
+    ip 10.0.10.1
+
+interface Vlan1011
+  description Teragraph-iDRAC
+  no shutdown
+  ip address 10.0.11.3/24
+  ip router ospf 1 area 0.0.0.0
+  hsrp version 2
+  hsrp 1011 
+    ip 10.0.11.1
+
+interface Vlan1012
+  description Teragraph-Data
+  no shutdown
+  ip address 10.0.12.3/24
+  ip router ospf 1 area 0.0.0.0
+  hsrp version 2
+  hsrp 1012 
+    ip 10.0.12.1
+
+interface port-channel10
+  description downlink Nexus-11
+  switchport
+  switchport mode trunk
+  spanning-tree port type network
+  vpc 10
+
+interface port-channel11
+  description downlink Nexus-12
+  switchport
+  switchport mode trunk
+  spanning-tree port type network
+  vpc 11
+
+interface port-channel40
+  description *** VPC PEER LINKS ***
+  switchport
+  switchport mode trunk
+  spanning-tree port type network
+  vpc peer-link
+
+interface Ethernet1/1
+  description downlink Nexus-11
+  switchport
+  switchport mode trunk
+  channel-group 10
+  no shutdown
+
+interface Ethernet1/2
+  description down link Nexus-12
+  switchport
+  switchport mode trunk
+  channel-group 11
+  no shutdown
+
+interface Ethernet1/3
+
+interface Ethernet1/4
+  vrf member keep-alive
+  ip address 1.1.1.2/30
+  no shutdown
+
+interface Ethernet1/5
+  description *** VPC PEER LINKS ***
+  switchport
+  switchport mode trunk
+  channel-group 40
+  no shutdown
+
+interface Ethernet1/6
+  description *** VPC PEER LINKS ***
+  switchport
+  switchport mode trunk
+  channel-group 40
+  no shutdown
+
+interface Ethernet1/7
+  ip address 172.16.0.11/24
+  ip ospf network broadcast
+  no ip ospf passive-interface
+  ip router ospf 1 area 0.0.0.0
+  no shutdown
+
+interface Ethernet1/8
+
+interface Ethernet1/9
+
+interface Ethernet1/10
+
+interface Ethernet1/11
+
+interface Ethernet1/12
+
+interface Ethernet1/13
+
+interface Ethernet1/14
+
+interface Ethernet1/15
+
+interface Ethernet1/16
+
+interface Ethernet1/17
+
+interface Ethernet1/18
+
+interface Ethernet1/19
+
+interface Ethernet1/20
+
+interface Ethernet1/21
+
+interface Ethernet1/22
+
+interface Ethernet1/23
+
+interface Ethernet1/24
+
+interface Ethernet1/25
+
+interface Ethernet1/26
+
+interface Ethernet1/27
+
+interface Ethernet1/28
+
+interface Ethernet1/29
+
+interface Ethernet1/30
+
+interface Ethernet1/31
+
+interface Ethernet1/32
+
+interface Ethernet1/33
+
+interface Ethernet1/34
+
+interface Ethernet1/35
+
+interface Ethernet1/36
+
+interface Ethernet1/37
+
+interface Ethernet1/38
+
+interface Ethernet1/39
+
+interface Ethernet1/40
+
+interface Ethernet1/41
+
+interface Ethernet1/42
+
+interface Ethernet1/43
+
+interface Ethernet1/44
+
+interface Ethernet1/45
+
+interface Ethernet1/46
+
+interface Ethernet1/47
+
+interface Ethernet1/48
+
+interface Ethernet1/49
+
+interface Ethernet1/50
+
+interface Ethernet1/51
+
+interface Ethernet1/52
+
+interface Ethernet1/53
+
+interface Ethernet1/54
+
+interface Ethernet1/55
+
+interface Ethernet1/56
+
+interface Ethernet1/57
+
+interface Ethernet1/58
+
+interface Ethernet1/59
+
+interface Ethernet1/60
+
+interface Ethernet1/61
+
+interface Ethernet1/62
+
+interface Ethernet1/63
+
+interface Ethernet1/64
+
+interface mgmt0
+  vrf member management
+  ip address 10.10.100.41/24
+
+interface loopback0
+  ip address 7.1.1.1/24
+icam monitor scale
+
+line console
+line vty
+boot nxos bootflash:/nxos.9.3.10.bin sup-1
+router ospf 1
+  router-id 10.0.0.2
+  passive-interface default
+router bgp 65002
+  address-family ipv4 unicast
+    network 7.1.1.0/24
+    network 10.0.0.0/22
+    network 10.0.0.0/24
+    network 10.0.1.0/24
+    network 10.0.2.0/24
+    network 10.0.10.0/24
+    network 10.0.11.0/24
+    network 10.0.12.0/24
+    network 10.0.13.0/24
+    redistribute ospf core route-map OSPF-SVI
+  neighbor 172.16.0.1
+    remote-as 65001
+    description pfsense
+    address-family ipv4 unicast
+      next-hop-self

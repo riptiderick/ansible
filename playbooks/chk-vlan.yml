@@ -1,0 +1,6 @@
+---
+- name: Gather vlans facts from the device using nxos_vlans
+  hosts: nxos
+  tasks:
+    cisco.nxos.nxos_vlans:
+      state: gathered

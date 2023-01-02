@@ -1,0 +1,30 @@
+---
+- hosts: routers
+  vars:
+    ansible_connection: network_cli
+    ansible_network_os: ios
+    ansible_user: admin
+    ansible_ssh_pass: admin
+
+  tasks:
+    - name: show version
+      cisco.ios.ios_command:
+        commands: show version
+      register: version
+
+    - name: save to file
+      copy: 
+        content: "{{version.stdout[0]}}"
+        dest: "~/ansible/output/show-ver.txt"
+
+- hosts: routers
+  tasks:
+    - name: show ip int brie
+      cisco.ios.ios_command:
+        commands: show ip int brie
+      register: ip_interfaces
+
+    - name: save ip
+      copy: 
+        content: "{{ip_interfaces.stdout[0]}}"
+        dest: "~/ansible/output/ip-interfaces.txt"

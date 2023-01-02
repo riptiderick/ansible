@@ -1,0 +1,278 @@
+OUTPUT FROM SHOW COMMANDS for: 10.10.100.42 
+
+############ show cdp neigh ################
+
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+rips-access-sw1.ripsnetwork.local
+                    mgmt0          174    R S I     WS-C2960L-24P Gig0/17       
+core-2(9Y4K2FKANF8)
+                    mgmt0          171    R S s     N9K-C9500v    mgmt0         
+core-1(9L5W6ZP1W55)
+                    mgmt0          175    R S s     N9K-C9500v    mgmt0         
+dist-2(90DEVFULVAX)
+                    mgmt0          121    R S s     N9K-C9500v    mgmt0         
+dist-2(90DEVFULVAX)
+                    Eth1/4         148    R S s     N9K-C9500v    Eth1/4        
+dist-2(90DEVFULVAX)
+                    Eth1/5         148    R S s     N9K-C9500v    Eth1/5        
+dist-2(90DEVFULVAX)
+                    Eth1/6         148    R S s     N9K-C9500v    Eth1/6        
+core-1(9L5W6ZP1W55)
+                    Eth1/7         146    R S I s   N9K-C9500v    Eth1/1        
+core-2(9Y4K2FKANF8)
+                    Eth1/8         147    R S I s   N9K-C9500v    Eth1/1        
+
+Total entries displayed: 9
+
+############ show cdp neighbors detail ################
+
+----------------------------------------
+Device ID:rips-access-sw1.ripsnetwork.local
+VTP Management Domain Name: catlab.poe2
+
+Interface address(es): 1
+    IPv4 Address: 10.10.100.3
+Platform: cisco WS-C2960L-24PS-LL, Capabilities: Router Switch IGMP Filtering 
+Interface: mgmt0, Port ID (outgoing port): GigabitEthernet0/17
+Holdtime: 174 sec
+
+Version:
+Cisco IOS Software, C2960L Software (C2960L-UNIVERSALK9-M), Version 15.2(6)E, RELEASE SOFTWARE (fc4)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2017 by Cisco Systems, Inc.
+Compiled Sat 05-Aug-17 12:46 by prod_rel_team
+
+Advertisement Version: 2
+
+Native VLAN: 100
+Duplex: full
+Mgmt address(es):
+    IPv4 Address: 10.10.100.3
+Local Interface MAC: 50:0e:00:00:1b:01
+Remote Interface MAC: 50:0f:00:00:1b:01
+----------------------------------------
+Device ID:core-2(9Y4K2FKANF8)
+System Name: core-2
+
+Interface address(es): 1
+    IPv4 Address: 10.10.100.41
+Platform: N9K-C9500v, Capabilities: Router Switch Supports-STP-Dispute
+Interface: mgmt0, Port ID (outgoing port): mgmt0
+Holdtime: 171 sec
+
+Version:
+Cisco Nexus Operating System (NX-OS) Software, Version 9.3(10)
+
+Advertisement Version: 2
+
+MTU: 1500
+Mgmt address(es):
+    IPv4 Address: 10.10.100.41
+Local Interface MAC: 50:0e:00:00:1b:01
+Remote Interface MAC: 50:0f:00:00:1b:01
+----------------------------------------
+Device ID:core-1(9L5W6ZP1W55)
+System Name: core-1
+
+Interface address(es): 1
+    IPv4 Address: 10.10.100.40
+Platform: N9K-C9500v, Capabilities: Router Switch Supports-STP-Dispute
+Interface: mgmt0, Port ID (outgoing port): mgmt0
+Holdtime: 175 sec
+
+Version:
+Cisco Nexus Operating System (NX-OS) Software, Version 9.3(10)
+
+Advertisement Version: 2
+Duplex: full
+
+MTU: 1500
+Mgmt address(es):
+    IPv4 Address: 10.10.100.40
+Local Interface MAC: 50:0e:00:00:1b:01
+Remote Interface MAC: 50:0f:00:00:1b:01
+----------------------------------------
+Device ID:dist-2(90DEVFULVAX)
+System Name: dist-2
+
+Interface address(es): 1
+    IPv4 Address: 10.10.100.43
+Platform: N9K-C9500v, Capabilities: Router Switch Supports-STP-Dispute
+Interface: mgmt0, Port ID (outgoing port): mgmt0
+Holdtime: 121 sec
+
+Version:
+Cisco Nexus Operating System (NX-OS) Software, Version 9.3(10)
+
+Advertisement Version: 2
+
+MTU: 1500
+Mgmt address(es):
+    IPv4 Address: 10.10.100.43
+Local Interface MAC: 50:0e:00:00:1b:01
+Remote Interface MAC: 50:0f:00:00:1b:01
+----------------------------------------
+Device ID:dist-2(90DEVFULVAX)
+System Name: dist-2
+
+Interface address(es): 1
+    IPv4 Address: 1.1.1.2
+Platform: N9K-C9500v, Capabilities: Router Switch Supports-STP-Dispute
+Interface: Ethernet1/4, Port ID (outgoing port): Ethernet1/4
+Holdtime: 148 sec
+
+Version:
+Cisco Nexus Operating System (NX-OS) Software, Version 9.3(10)
+
+Advertisement Version: 2
+Duplex: full
+
+MTU: 1500
+Mgmt address(es):
+    IPv4 Address: 10.10.100.43
+Local Interface MAC: 50:0e:00:00:01:04
+Remote Interface MAC: 50:10:00:00:1b:08
+----------------------------------------
+Device ID:dist-2(90DEVFULVAX)
+System Name: dist-2
+
+Interface address(es): 1
+    IPv4 Address: 1.1.1.2
+Platform: N9K-C9500v, Capabilities: Router Switch Supports-STP-Dispute
+Interface: Ethernet1/5, Port ID (outgoing port): Ethernet1/5
+Holdtime: 148 sec
+
+Version:
+Cisco Nexus Operating System (NX-OS) Software, Version 9.3(10)
+
+Advertisement Version: 2
+
+Native VLAN: 1
+Duplex: full
+
+MTU: 1500
+Mgmt address(es):
+    IPv4 Address: 10.10.100.43
+Local Interface MAC: 50:0e:00:00:01:05
+Remote Interface MAC: 00:00:00:00:00:00
+----------------------------------------
+Device ID:dist-2(90DEVFULVAX)
+System Name: dist-2
+
+Interface address(es): 1
+    IPv4 Address: 1.1.1.2
+Platform: N9K-C9500v, Capabilities: Router Switch Supports-STP-Dispute
+Interface: Ethernet1/6, Port ID (outgoing port): Ethernet1/6
+Holdtime: 148 sec
+
+Version:
+Cisco Nexus Operating System (NX-OS) Software, Version 9.3(10)
+
+Advertisement Version: 2
+
+Native VLAN: 1
+Duplex: full
+
+MTU: 1500
+Mgmt address(es):
+    IPv4 Address: 10.10.100.43
+Local Interface MAC: 50:0e:00:00:01:06
+Remote Interface MAC: 00:00:00:00:00:00
+----------------------------------------
+Device ID:core-1(9L5W6ZP1W55)
+System Name: core-1
+
+Interface address(es): 1
+    IPv4 Address: 10.11.1.9
+Platform: N9K-C9500v, Capabilities: Router Switch IGMP Filtering Supports-STP-Dispute
+Interface: Ethernet1/7, Port ID (outgoing port): Ethernet1/1
+Holdtime: 146 sec
+
+Version:
+Cisco Nexus Operating System (NX-OS) Software, Version 9.3(10)
+
+Advertisement Version: 2
+
+Native VLAN: 1
+Duplex: full
+
+MTU: 1500
+Mgmt address(es):
+    IPv4 Address: 10.10.100.40
+Local Interface MAC: 50:0e:00:00:01:07
+Remote Interface MAC: 00:00:00:00:00:00
+----------------------------------------
+Device ID:core-2(9Y4K2FKANF8)
+System Name: core-2
+
+Interface address(es): 1
+    IPv4 Address: 10.11.1.10
+Platform: N9K-C9500v, Capabilities: Router Switch IGMP Filtering Supports-STP-Dispute
+Interface: Ethernet1/8, Port ID (outgoing port): Ethernet1/1
+Holdtime: 147 sec
+
+Version:
+Cisco Nexus Operating System (NX-OS) Software, Version 9.3(10)
+
+Advertisement Version: 2
+
+Native VLAN: 1
+Duplex: full
+
+MTU: 1500
+Mgmt address(es):
+    IPv4 Address: 10.10.100.41
+Local Interface MAC: 50:0e:00:00:01:08
+Remote Interface MAC: 00:00:00:00:00:00
+
+############ show version ################
+
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Documents: http://www.cisco.com/en/US/products/ps9372/tsd_products_support_series_home.html
+Copyright (c) 2002-2022, Cisco Systems, Inc. All rights reserved.
+The copyrights to certain works contained herein are owned by
+other third parties and are used and distributed under license.
+Some parts of this software are covered under the GNU Public
+License. A copy of the license is available at
+http://www.gnu.org/licenses/gpl.html.
+
+Nexus 9000v is a demo version of the Nexus Operating System
+
+Software
+  BIOS: version 
+ NXOS: version 9.3(10)
+  BIOS compile time:  
+  NXOS image file is: bootflash:///nxos.9.3.10.bin
+  NXOS compile time:  7/8/2022 9:00:00 [07/08/2022 18:10:17]
+
+
+Hardware
+  cisco Nexus9000 C9500v Chassis ("Supervisor Module")
+   with 10211552 kB of memory.
+  Processor Board ID 9LFH7D9AW4L
+
+  Device name: dist-1
+  bootflash:    4287040 kB
+Kernel uptime is 0 day(s), 1 hour(s), 17 minute(s), 20 second(s)
+
+Last reset 
+  Reason: Unknown
+  System version: 
+  Service: 
+
+plugin
+  Core Plugin, Ethernet Plugin
+
+Active Package(s):
+
+############ show ip interface brief | exc admin ################
+
+IP Interface Status for VRF "default"(1)
+Interface            IP Address      Interface Status
+
